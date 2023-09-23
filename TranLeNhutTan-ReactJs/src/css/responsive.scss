@@ -1,0 +1,133 @@
+$height-width-950: 180px;
+@media only screen and (max-width: 1200px) {
+  nav {
+    padding: 0 30px !important;
+  }
+  .menu {
+    a {
+      padding: 5px 8px;
+      transition: 0.3s;
+      font-size: 15px;
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .padding-responsive {
+    padding: 0 20px;
+  }
+  .isShowResponsive {
+    display: none !important;
+  }
+  .popular-item {
+    height: $height-width-950;
+  }
+  .best-value-trips-item {
+    img {
+      height: $height-width-950;
+    }
+  }
+  .best-value-trips-price-item {
+    top: 120px;
+    font-size: 14px;
+  }
+  .best-value-trips-item-content {
+    p {
+      font-size: 10px;
+    }
+  }
+  .best-value-trips-item-infor-right {
+    font-size: 10px;
+  }
+  #Articles-Tips {
+    padding: 0 -20px;
+  }
+  .articles-tips-item {
+    img {
+      height: $height-width-950;
+    }
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .div-input-header {
+    width: 100% !important;
+  }
+
+  .wrap-popular-item,
+  .wrap-best-value-trips-item,
+  .wrap-why-choose-us-item,
+  .wrap-articles-tips-item,
+  .wrap-footer-item {
+    flex-direction: column;
+  }
+
+  .popular-item,
+  .best-value-trips-item,
+  .why-choose-us-item,
+  .articles-tips-item,
+  .footer-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .popular-item {
+    height: 310px;
+  }
+
+  .best-value-trips-item {
+    img {
+      height: auto;
+    }
+  }
+
+  .best-value-trips-price-item{
+    top: 70%;
+  }
+
+  .why-choose-us-item{
+    img{
+        width: 20%;
+    }
+
+    h4{
+        font-size: 18px;
+    }
+  }
+
+  #art-img{
+    height: 435px;
+  }
+
+  .articles-tips-item{
+    img{
+        height: auto;
+    }
+  }
+
+  .best-value-trips-item-content{
+    strong{
+        font-size: 16px;
+    }
+
+    p:nth-child(1){
+        font-size: 16px;
+    }
+  }
+
+  .awards{
+    img{
+        width: 35%;
+    }
+  }
+
+  .wrap-icon-footer{
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 765px) {
+    .best-value-trips-price-item{
+        top: 60%;
+      }
+}
