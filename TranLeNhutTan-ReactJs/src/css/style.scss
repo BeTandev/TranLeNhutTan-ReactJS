@@ -600,3 +600,16 @@ footer {
   }
 }
 /* End Footer */
+
+.scroll-to-top-button{
+  background-color: #1EC6B5;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

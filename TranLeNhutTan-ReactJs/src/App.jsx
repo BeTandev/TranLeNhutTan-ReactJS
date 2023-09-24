@@ -10,8 +10,16 @@ import BestValueTrips from "./components/BestValueTrips";
 import WhyChooseUs from "./components/WhyChooseUs";
 import ArticlesTrips from "./components/ArticlesTips";
 import Footer from "./components/Footer";
+import { useEffect, useState } from "react";
 
 function App() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <div>
@@ -24,6 +32,12 @@ function App() {
         <section id="art-img" className="mt-5" />
         <ArticlesTrips></ArticlesTrips>
         <Footer></Footer>
+        <div
+          className="scroll-to-top-button"
+          onClick={scrollToTop}
+        >
+          <i class="fa-solid fa-chevron-up text-white"></i>
+        </div>
       </div>
     </>
   );
