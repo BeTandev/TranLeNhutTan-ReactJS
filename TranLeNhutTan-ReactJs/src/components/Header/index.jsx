@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import InputItem from "./inputItem";
 
 function Header() {
+  const showAdvancedSearch = useRef(null);
+  const [checkAdvancedSearch, setCheckAdvancedSearch] = useState(false);
+  const [iconAdvanced, setIconAdvanced] = useState(true);
+  let iconSearch = "";
+
+  function isShowAdvancedSearch() {
+    if (checkAdvancedSearch) {
+      showAdvancedSearch.current.classList.remove("flex-react");
+      setCheckAdvancedSearch(false);
+      setIconAdvanced(true);
+    } else {
+      showAdvancedSearch.current.classList.add("flex-react");
+      setCheckAdvancedSearch(true);
+      setIconAdvanced(false);
+    }
+  }
+
+  if (iconAdvanced) {
+    iconSearch = <i class="fa-solid fa-chevron-down"></i>;
+  } else {
+    iconSearch = <i class="fa-solid fa-chevron-up"></i>;
+  }
+
   return (
     <header className="position-relative">
       <div className="container_fluid">
@@ -12,16 +36,11 @@ function Header() {
             </p>
             <form>
               <div className="d-flex flex-wrap justify-content-between col-12 mt-5">
-                <div className="div-input-header d-flex">
-                  <input
-                    type="text"
-                    placeholder="Destination, city"
-                    className="input p-2 px-3"
-                  />
-                  <span className="input-icon">
-                    <i className="fa-solid fa-magnifying-glass" />
-                  </span>
-                </div>
+                <InputItem
+                  placeholderInput="Destination, city"
+                  iconInput="fa-solid fa-magnifying-glass"
+                  nameInput="destination"
+                ></InputItem>
                 <div className="div-input-header d-flex">
                   <select id="month" className="input p-2 px-3 text-secondary">
                     <option value="Any Month">Any Month</option>
@@ -55,28 +74,19 @@ function Header() {
                     <i className="fa-solid fa-arrows-up-down" />
                   </span>
                 </div>
-                <div className="div-input-header">
-                  <input
-                    type="submit"
-                    placeholder="Destination, city"
-                    className="input-btn text-white input p-2 px-3 w-100"
-                    defaultValue="Search"
-                  />
-                </div>
+                <InputItem isSubmit value="Search"></InputItem>
               </div>
-              <p className="text-white advanced-search" id="advanced-search">
-                Advanced Search
-              </p>
               <div
-                className="d-flex flex-wrap justify-content-between col-12"
+                className="d-none flex-wrap justify-content-between col-12"
                 id="wrap-second-input-header"
+                ref={showAdvancedSearch}
               >
                 <div className="div-input-header">
                   <select
                     id="category"
                     className="input p-2 px-3 text-secondary"
                   >
-                    <option value>All Categories</option>
+                    <option value="">All Categories</option>
                     <option value="Mountain">Mountain</option>
                     <option value="Rural">Rural</option>
                     <option value="Snow & Ice">Snow &amp; Ice</option>
@@ -91,7 +101,7 @@ function Header() {
                     id="destinations"
                     className="input p-2 px-3 text-secondary"
                   >
-                    <option value>Any destinations</option>
+                    <option value="">Any destinations</option>
                     <option value="Mountain">Tokyo</option>
                     <option value="Rural">Seoul</option>
                     <option value="Snow & Ice">Paris</option>
@@ -109,24 +119,20 @@ function Header() {
                     <i className="fa-solid fa-chevron-down" />
                   </span>
                 </div>
-                <div className="div-input-header">
-                  <input
-                    type="text"
-                    placeholder="Max budget ex .500"
-                    className="input p-2 px-3"
-                  />
-                  <span className="input-icon">
-                    <i className="fa-solid fa-dollar-sign" />
-                  </span>
-                </div>
-                <div className="div-input-header invisible">
-                  <input
-                    type="text"
-                    placeholder="Destination, city"
-                    className="input p-2 px-3"
-                  />
-                </div>
+                <InputItem
+                  placeholderInput="Max budget ex .500"
+                  iconInput="fa-solid fa-dollar-sign"
+                  nameInput="budget"
+                ></InputItem>
+                <InputItem isInvisible></InputItem>
               </div>
+              <p
+                className="text-white advanced-search"
+                id="advanced-search"
+                onClick={isShowAdvancedSearch}
+              >
+                {iconSearch}Advanced Search
+              </p>
             </form>
           </div>
         </div>

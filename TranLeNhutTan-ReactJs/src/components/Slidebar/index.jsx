@@ -1,38 +1,41 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showSlideBar } from "../../store/showSlideBaraction";
+import ItemMenuSlideBar from "./ItemMenuSlideBar";
 
 function Slidebar() {
+  const dispatch = useDispatch()
+  let {params} = useSelector(state => state.SHOWSLIDEBAR)
+  const slideBarRef = useRef(null)
+  console.log(params)
+  
+  useEffect(() => {
+    if(params.checkShowSlideBar){
+      slideBarRef.current.classList.add("block-react")
+    }else{
+      slideBarRef.current.classList.remove("block-react")
+    }
+  }, [params.checkShowSlideBar])
+
+  function closeSlideBar(){
+    dispatch(showSlideBar(params = {checkShowSlideBar: false}))
+  }
   return (
-    <section id="slidebar">
-      <p className="close-tab" id="close-tab">
+    <section id="slidebar" ref={slideBarRef}>
+      <p className="close-tab" id="close-tab" onClick={closeSlideBar}>
         <i className="fa-solid fa-x" />
       </p>
       <div className="wrap-menu-slidebar">
-        <p>
-          <a>Home</a>
-        </p>
-        <p>
-          <a>Tours</a>
-        </p>
-        <p>
-          <a>Booking</a>
-        </p>
-        <p>
-          <a>Destinations</a>
-        </p>
-        <p>
-          <a>Pages</a>
-        </p>
-        <p>
-          <a>Blog</a>
-        </p>
-        <p>
-          <a>Shortcodes</a>
-        </p>
-        <p>
-          <a>Shop</a>
-        </p>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/" content="Home"></ItemMenuSlideBar>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/home-2/#" content="Tours"></ItemMenuSlideBar>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/tour/the-new-california/" content="Booking"></ItemMenuSlideBar>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/home-2/#" content="Destinations"></ItemMenuSlideBar>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/" content="Pages"></ItemMenuSlideBar>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/" content="Blog"></ItemMenuSlideBar>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/" content="Shortcodes"></ItemMenuSlideBar>
+        <ItemMenuSlideBar connect="https://themes.themegoods.com/grandtour/demo/" content="Shop"></ItemMenuSlideBar>
       </div>
-      <div className="wrap-tours-slidebar">
+      <div className="wrap-tours-slidebar mt-5">
         <div className="tour-slidebar-item first-tour-slidebar-item">
           <strong className="price-tour-slidebar">$3,900</strong>
           <strong className="title-tour-slidebar">Swiss Alps Trip</strong>
