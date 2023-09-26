@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { showSlideBar } from "../../store/showSlideBaraction";
+import { showSlideBar } from "../../store/showSlideBarAction";
 import { data } from "../../data/mock";
 import { Link } from "react-router-dom";
 
