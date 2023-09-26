@@ -1,4 +1,4 @@
-import { SHOW_SLIDE_BAR } from "./showSlideBaraction";
+import { SHOW_SLIDE_BAR } from "./showSlideBarAction";
 
 const initialState = {
   params: {},
